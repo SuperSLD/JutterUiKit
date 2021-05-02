@@ -1,6 +1,15 @@
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
+# Build files and folders
+.gradle/
+build/
+keys/
+*.gradle
+
+# Properties
+local.properties
+
+# Idea
+.idea/
+**/*.iml
+
+# Mac OS
+.DS_Store
