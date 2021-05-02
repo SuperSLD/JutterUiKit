@@ -1,5 +1,5 @@
 # Jutter UI Kit
-![](https://img.shields.io/github/stars/SuperSLD/Recipes) ![](https://img.shields.io/github/forks/SuperSLD/Recipes)
+![](https://img.shields.io/github/stars/SuperSLD/JutterUiKit) ![](https://img.shields.io/github/forks/SuperSLD/JutterUiKit)
 
 Набор UI элементов различного назначения ля андроид приложений, с классными анимации.
 ## Подключение
@@ -17,6 +17,7 @@ implementation 'online.jutter.supersld:jutter_ui_kit:$last_version'
 - JTProgressBar - лоадер взамену стандартного.
 ## JTProgressBar
 Прогресс бар из стандартных элементов андроида с возсожностью установки нескольких цветов, которые меняются во время загрузки. Отличный способ разбавить любое приложение и отвлечь пользователя от долгой загрузки.
+
 ![](https://github.com/SuperSLD/JutterUiKit/blob/main/images/20210502_173336.gif?raw=true)
 
 ```xml
@@ -37,6 +38,7 @@ jtProgressBar.setColors(
 ```
 ## JTDiagram
 Круговая диаграмма с текстом посередине, и небольшим подзаголовком. При появлении на экране диаграмма с анимацией заполняется.
+
 ![](https://github.com/SuperSLD/JutterUiKit/blob/main/images/20210502_173138.gif?raw=true)
 ```xml
 <online.juter.supersld.view.JTDiagram
