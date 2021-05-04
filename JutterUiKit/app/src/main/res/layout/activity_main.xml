@@ -18,6 +18,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
+                android:text="JTValueViewer"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginBottom="16dp"/>
+            <online.juter.supersld.view.JTValueViewer
+                android:id="@+id/vProgressFirst"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"/>
+
+            <online.juter.supersld.view.JTValueViewer
+                android:id="@+id/vProgressSecond"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginBottom="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:text="JTProgressBar"
                 android:gravity="center"
                 android:textSize="24sp"
@@ -50,6 +74,9 @@
                 android:layout_height="1dp"
                 android:background="@android:color/black"
                 android:layout_marginBottom="16dp"/>
+
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

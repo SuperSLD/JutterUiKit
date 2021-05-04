@@ -161,15 +161,15 @@ class JTDiagram :View {
             for (i in mData!!.indices) {
                 var angle = mData!![i] * mMaxAngle / mDataSum
                 mPaint.color = mColors!![i]
-                canvas?.drawArc(
-                    w / 2 - h / 2.toFloat() + h*mWithPart/2,
-                    0f + h*mWithPart/2,
-                    w / 2 + h / 2.toFloat() - h*mWithPart/2,
-                    h.toFloat() - h*mWithPart/2,
-                    mLastAngle,
-                    angle,
-                    false,
-                    mPaint
+                canvas.drawArc(
+                        w / 2 - h / 2.toFloat() + h*mWithPart/2,
+                        0f + h*mWithPart/2,
+                        w / 2 + h / 2.toFloat() - h*mWithPart/2,
+                        h.toFloat() - h*mWithPart/2,
+                        mLastAngle,
+                        angle,
+                        false,
+                        mPaint
                 )
                 mLastAngle += angle
             }

@@ -1,5 +1,6 @@
 package online.juter.supersld
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -19,19 +20,42 @@ class MainActivity : AppCompatActivity() {
                 ContextCompat.getColor(context!!, R.color.colorTextHint),
                 ContextCompat.getColor(context!!, R.color.colorTextHint)
             )
-            setData(
-                mutableListOf(Random.nextFloat(), Random.nextFloat(), Random.nextFloat(), Random.nextFloat()),
-                mutableListOf(
-                    ContextCompat.getColor(context!!, R.color.colorGoogle1),
-                    ContextCompat.getColor(context!!, R.color.colorGoogle2),
-                    ContextCompat.getColor(context!!, R.color.colorGoogle3),
-                    ContextCompat.getColor(context!!, R.color.colorGoogle4)
-                )
-            )
+            recreateDiagramData(this)
             refresh()
             setOnClickListener {
                 refresh()
+                recreateDiagramData(this)
             }
         }
+
+        with(vProgressFirst) {
+            setEmptyColor(Color.parseColor("#E6EBF0"))
+            setMaxProgress(200)
+            setCenterTextFormat("%.0f%%")
+            setProgress(Random.nextInt(0, 200))
+            setOnClickListener {
+                setProgress(Random.nextInt(0, 200))
+            }
+        }
+
+        with(vProgressSecond) {
+            setMaxProgress(200)
+            setProgress(143)
+            setColorText(ContextCompat.getColor(baseContext, R.color.colorGoogle3))
+            setColor(ContextCompat.getColor(baseContext, R.color.colorGoogle3))
+            fixProgress(false)
+        }
+    }
+
+    private fun recreateDiagramData(diagram: JTDiagram) {
+        diagram.setData(
+                mutableListOf(Random.nextFloat(), Random.nextFloat(), Random.nextFloat(), Random.nextFloat()),
+                mutableListOf(
+                        ContextCompat.getColor(baseContext, R.color.colorGoogle1),
+                        ContextCompat.getColor(baseContext, R.color.colorGoogle2),
+                        ContextCompat.getColor(baseContext, R.color.colorGoogle3),
+                        ContextCompat.getColor(baseContext, R.color.colorGoogle4)
+                )
+        )
     }
 }
