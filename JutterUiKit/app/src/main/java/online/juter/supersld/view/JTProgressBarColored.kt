@@ -2,7 +2,7 @@ package online.juter.supersld.view
 
 import android.content.Context
 import android.util.AttributeSet
-import online.juter.supersld.view.JTProgressBar
+import online.juter.supersld.view.data.JTProgressBar
 
 class JTProgressBarColored : JTProgressBar {
     constructor(context: Context) : super(context)

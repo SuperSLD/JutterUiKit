@@ -1,4 +1,4 @@
-package online.juter.supersld.view
+package online.juter.supersld.view.data
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
@@ -8,8 +8,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.animation.doOnEnd
-import androidx.core.content.ContextCompat
 import kotlin.math.cos
 import kotlin.math.sin
 

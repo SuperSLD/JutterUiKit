@@ -18,17 +18,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
+                android:text="JTLineProgress"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:layout_marginBottom="16dp"/>
+            <online.juter.supersld.view.data.JTLineProgress
+                android:id="@+id/vLineProgress"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginBottom="16dp"/>
+            <online.juter.supersld.view.data.JTLineProgress
+                android:id="@+id/vLineProgressSecond"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/lineRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="refresh"
+                android:layout_gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginBottom="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:text="JTValueViewer"
                 android:gravity="center"
                 android:textSize="24sp"
                 android:layout_marginBottom="16dp"/>
-            <online.juter.supersld.view.JTValueViewer
+            <online.juter.supersld.view.data.JTValueViewer
                 android:id="@+id/vProgressFirst"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="16dp"/>
 
-            <online.juter.supersld.view.JTValueViewer
+            <online.juter.supersld.view.data.JTValueViewer
                 android:id="@+id/vProgressSecond"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -46,7 +77,7 @@
                 android:gravity="center"
                 android:textSize="24sp"
                 android:layout_marginBottom="16dp"/>
-            <online.juter.supersld.view.JTProgressBar
+            <online.juter.supersld.view.data.JTProgressBar
                 android:id="@+id/JTProgress"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -64,7 +95,7 @@
                 android:gravity="center"
                 android:textSize="24sp"
                 android:layout_marginBottom="16dp"/>
-            <online.juter.supersld.view.JTDiagram
+            <online.juter.supersld.view.data.JTDiagram
                 android:id="@+id/vDiagram"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"

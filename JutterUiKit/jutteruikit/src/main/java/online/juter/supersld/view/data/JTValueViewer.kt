@@ -1,4 +1,4 @@
-package online.juter.supersld.view
+package online.juter.supersld.view.data
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint

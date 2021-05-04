@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
-import online.juter.supersld.view.JTDiagram
+import online.juter.supersld.view.data.JTDiagram
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -44,6 +44,21 @@ class MainActivity : AppCompatActivity() {
             setColorText(ContextCompat.getColor(baseContext, R.color.colorGoogle3))
             setColor(ContextCompat.getColor(baseContext, R.color.colorGoogle3))
             fixProgress(false)
+        }
+
+        with(vLineProgress) {
+            setEmptyColor(Color.parseColor("#E6EBF0"))
+            setMaxProgress(200)
+            setProgress(Random.nextInt(0, 200))
+        }
+        with(vLineProgressSecond) {
+            setColor(ContextCompat.getColor(baseContext, R.color.colorGoogle2))
+            setMaxProgress(200)
+            setProgress(Random.nextInt(0, 200))
+        }
+        lineRefresh.setOnClickListener {
+            vLineProgress.setProgress(Random.nextInt(0, 200))
+            vLineProgressSecond.setProgress(Random.nextInt(0, 200))
         }
     }
 
