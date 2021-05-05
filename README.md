@@ -1,5 +1,8 @@
 # Jutter UI Kit
 ![](https://img.shields.io/github/stars/SuperSLD/JutterUiKit) ![](https://img.shields.io/github/forks/SuperSLD/JutterUiKit)
+
+---
+
 **Последняя версия 1.2.3**
 Набор UI элементов различного назначения ля андроид приложений, с классными анимации.
 ## Подключение
