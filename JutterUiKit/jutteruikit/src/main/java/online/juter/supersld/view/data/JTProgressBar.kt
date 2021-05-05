@@ -36,9 +36,13 @@ open class JTProgressBar: View {
         defUtils
     )
 
+    companion object {
+        private var mSavedAngle = 0f
+    }
+
     private var mColors = mutableListOf<Int>()
-    private var mFirstAngle = 0f
-    private var mSecondAngle = 30f
+    private var mFirstAngle = mSavedAngle
+    private var mSecondAngle = mSavedAngle + 30f
     private var mCurrentColorIndex = 0
     private var mCurrentColor = 0
     private var mFirstAnimator : ValueAnimator? = null
@@ -62,6 +66,7 @@ open class JTProgressBar: View {
             interpolator = LinearInterpolator()
             addUpdateListener { a ->
                 mFirstAngle = mLastFirstAngle + a.animatedValue as Float
+                mSavedAngle = mLastFirstAngle + a.animatedValue as Float
                 mSecondAngle = mLastSecondAngle + a.animatedValue as Float * 2
                 correctAngle()
                 invalidate()
@@ -80,6 +85,7 @@ open class JTProgressBar: View {
             interpolator = LinearInterpolator()
             addUpdateListener { a ->
                 mFirstAngle = mLastFirstAngle + a.animatedValue as Float * 2
+                mSavedAngle = mLastFirstAngle + a.animatedValue as Float * 2
                 mSecondAngle = mLastSecondAngle + a.animatedValue as Float
                 correctAngle()
                 invalidate()
