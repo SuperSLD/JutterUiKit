@@ -9,6 +9,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.animation.doOnEnd
+import androidx.core.content.res.ResourcesCompat
 import java.util.*
 import kotlin.math.cos
 import kotlin.math.sin
@@ -36,6 +37,7 @@ class JTValueViewer: View {
     private var mCenterTextFormat = "%.2f"
 
     private var mFixProgress = true
+    private var mTypeFaceId: Int? = null
 
     private var mColor = Color.parseColor("#EA4335")
     private var mColorBack: Int? = null
@@ -53,6 +55,15 @@ class JTValueViewer: View {
     fun setCenterTextFormat(textFormat: String) {
         mCenterTextFormat = textFormat
     }
+
+    /**
+     * Установка шрифта для текста в центре диаграммы
+     * @param typeFace id шрифта.
+     */
+    fun setTypeFace(typeFace: Int) {
+        mTypeFaceId = typeFace
+    }
+
 
     /**
      * Установка продолжителькости анимации.
@@ -233,6 +244,11 @@ class JTValueViewer: View {
                     h*mWithPart/2, mPaint)
                 lastAngle += angle
             }
+        }
+
+        if (mTypeFaceId != null) {
+            val customTypeface = ResourcesCompat.getFont(context, mTypeFaceId!!)
+            mPaint.typeface = customTypeface
         }
 
         mPaint.color = mColorText
