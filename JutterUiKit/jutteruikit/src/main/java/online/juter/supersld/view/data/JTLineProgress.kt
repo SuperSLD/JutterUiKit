@@ -9,6 +9,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.animation.doOnEnd
+import java.lang.Math.abs
 
 /**
  * Горизонтальное отображение прогресса.
@@ -108,9 +109,10 @@ class JTLineProgress : View {
      */
     fun addProgress(progress: Float, animated: Boolean = true) {
         if (animated) {
+            mAnimator?.end()
             mAnimator = ValueAnimator.ofFloat(mProgress, mProgress + progress)
             with(mAnimator!!) {
-                duration = ((progress / mMaxProgress) * mDuration).toLong()
+                duration = kotlin.math.abs((progress / mMaxProgress) * mDuration).toLong()
                 addUpdateListener {
                     mProgress = it.animatedValue as Float
                     invalidate()

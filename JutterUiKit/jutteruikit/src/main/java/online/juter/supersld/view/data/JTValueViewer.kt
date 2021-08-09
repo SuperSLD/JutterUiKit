@@ -172,7 +172,7 @@ class JTValueViewer: View {
         if (animated) {
             mAnimator = ValueAnimator.ofFloat(mProgress, mProgress + progress)
             with(mAnimator!!) {
-                duration = ((progress / mMaxProgress) * mDuration).toLong()
+                duration = kotlin.math.abs((progress / mMaxProgress) * mDuration).toLong()
                 addUpdateListener {
                     mProgress = it.animatedValue as Float
                     invalidate()

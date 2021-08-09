@@ -6,6 +6,9 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import online.juter.supersld.view.data.JTDiagram
+import online.juter.supersld.view.input.calendar.JTCalendarProperty
+import online.juter.supersld.view.input.calendar.JTCalendarView
+import java.util.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -13,64 +16,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        with(vDiagram) {
-            setCenterText("Touch to restart")
-            setCenterSubText("Animation")
-            setColorText(
-                ContextCompat.getColor(context!!, R.color.colorTextHint),
-                ContextCompat.getColor(context!!, R.color.colorTextHint)
-            )
-            recreateDiagramData(this)
-            refresh()
-            setOnClickListener {
-                refresh()
-                recreateDiagramData(this)
+        with(vSelector) {
+            init(listOf("Первый", "Второй", "Третий и 3"))
+            onTabChanged {
+                tvSelectorValue.text = listOf("Первый", "Второй", "Третий")[it]
             }
         }
-
-        with(vProgressFirst) {
-            setEmptyColor(Color.parseColor("#E6EBF0"))
-            setMaxProgress(200)
-            setCenterTextFormat("%.0f%%")
-            setProgress(Random.nextInt(0, 200))
-            setOnClickListener {
-                setProgress(Random.nextInt(0, 200))
-            }
-        }
-
-        with(vProgressSecond) {
-            setMaxProgress(200)
-            setProgress(143)
-            setColorText(ContextCompat.getColor(baseContext, R.color.colorGoogle3))
-            setColor(ContextCompat.getColor(baseContext, R.color.colorGoogle3))
-            fixProgress(false)
-        }
-
-        with(vLineProgress) {
-            setEmptyColor(Color.parseColor("#E6EBF0"))
-            setMaxProgress(200)
-            setProgress(Random.nextInt(0, 200))
-        }
-        with(vLineProgressSecond) {
-            setColor(ContextCompat.getColor(baseContext, R.color.colorGoogle2))
-            setMaxProgress(200)
-            setProgress(Random.nextInt(0, 200))
-        }
-        lineRefresh.setOnClickListener {
-            vLineProgress.setProgress(Random.nextInt(0, 200))
-            vLineProgressSecond.setProgress(Random.nextInt(0, 200))
-        }
-    }
-
-    private fun recreateDiagramData(diagram: JTDiagram) {
-        diagram.setData(
-                mutableListOf(Random.nextFloat(), Random.nextFloat(), Random.nextFloat(), Random.nextFloat()),
-                mutableListOf(
-                        ContextCompat.getColor(baseContext, R.color.colorGoogle1),
-                        ContextCompat.getColor(baseContext, R.color.colorGoogle2),
-                        ContextCompat.getColor(baseContext, R.color.colorGoogle3),
-                        ContextCompat.getColor(baseContext, R.color.colorGoogle4)
-                )
-        )
     }
 }

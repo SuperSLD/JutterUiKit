@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ivCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    app:cardElevation="0dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvMonthTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:text="Январь"/>
+
+    <TextView
+            android:id="@+id/tvMonthEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:textSize="14sp"
+            android:text="Январь"/>
+
+</LinearLayout>
