@@ -12,7 +12,7 @@ import java.util.*
 class WeekInstruction : SelectInstruction {
     override fun onSelect(adapter: JTCalendarAdapter, list: MutableList<Pair<Int, Any?>>, day: JTDay) {
         for (lineNum in list.indices) {
-            var lineChanged = false
+            val lineChanged = false
             val week = if (list[lineNum].second is JTWeek) list[lineNum].second as JTWeek else null
             if (week != null) for (dayNum in week.days.indices) week.days[dayNum]?.let {
 

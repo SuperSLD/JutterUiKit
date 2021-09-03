@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.get
+import online.juter.supersld.common.dp
 import online.juter.supersld.common.px
 import java.time.Duration
 
@@ -76,6 +77,7 @@ class JTHorizontalSwitch : LinearLayout {
         mTabs = tabs
         mParams = params
         mPosition = selectedIndex
+        mSelectorX = (VIRTUAL_SIZE/mTabs.size) * selectedIndex
 
         for ((i, tabText) in tabs.withIndex()) {
             val tabTextView = TextView(context)
@@ -150,6 +152,7 @@ class JTHorizontalSwitch : LinearLayout {
         val mPaint = Paint()
         val h = measuredHeight
         val w = measuredWidth
+        mPaint.style = Paint.Style.FILL
         mPaint.flags = Paint.ANTI_ALIAS_FLAG
 
         mPaint.color = mParams!!.getBackColor()
@@ -160,6 +163,13 @@ class JTHorizontalSwitch : LinearLayout {
         mPaint.color = mParams!!.getBackColorSelected()
         val selector = roundedRect(virtualXtoCurrent(mSelectorX), 0F, virtualXtoCurrent(mSelectorX) + sectionW, h.toFloat(), mParams!!.corners.toFloat().px, mParams!!.corners.toFloat().px, false)
         canvas?.drawPath(selector, mPaint)
+
+        if (mParams!!.getBorderColor() != null) {
+            mPaint.color = mParams!!.getBorderColor()!!
+            mPaint.style = Paint.Style.STROKE
+            val border = roundedRect(0F, 0F, w.toFloat(), h.toFloat(), mParams!!.corners.toFloat().px, mParams!!.corners.toFloat().px, false)
+            canvas?.drawPath(border, mPaint)
+        }
 
         super.onDraw(canvas)
     }
@@ -178,6 +188,7 @@ class JTHorizontalSwitch : LinearLayout {
 
         val backColor: String = "#E9E9F5",
         val backColorSelected: String = "#008F4C",
+        val borderColor: String? = null,
 
         val fontFamily: Int? = null,
         val fontSize: Int = 14,
@@ -190,6 +201,8 @@ class JTHorizontalSwitch : LinearLayout {
 
         fun getBackColor() = Color.parseColor(backColor)
         fun getBackColorSelected() = Color.parseColor(backColorSelected)
+        fun getBorderColor() = if (borderColor != null) Color.parseColor(borderColor) else null
+
     }
 
     private fun roundedRect(

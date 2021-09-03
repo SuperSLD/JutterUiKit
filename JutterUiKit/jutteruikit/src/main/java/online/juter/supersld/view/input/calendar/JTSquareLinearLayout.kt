@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 
+/**
+ * Квадратный линейный контейнер.
+ */
 class JTSquareLinearLayout : LinearLayout {
 
     constructor(context: Context) : super(context)
