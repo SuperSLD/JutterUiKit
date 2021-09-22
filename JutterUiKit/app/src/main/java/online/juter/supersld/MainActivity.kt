@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         with(vSelector) {
-            init(listOf("Первый", "Второй", "Третий и 3"), selectedIndex = 1, params = JTHorizontalSwitch.JTSwitchParams(borderColor = "#000000"))
+            init(listOf("Первый", "Второй", "Третий и 3"), selectedIndex = 1, params = JTHorizontalSwitch.JTSwitchParams())
             onTabChanged {
                 tvSelectorValue.text = listOf("Первый", "Второй", "Третий")[it]
             }
