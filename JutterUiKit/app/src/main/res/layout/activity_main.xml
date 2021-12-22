@@ -6,25 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <online.juter.supersld.view.input.form.JTFormView
+            android:id="@+id/vForm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-    >
-        <online.juter.supersld.view.input.selectors.JTHorizontalSwitch
-                android:id="@+id/vSelector"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-        />
-
-        <TextView
-                android:id="@+id/tvSelectorValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:gravity="center"
-        />
-    </LinearLayout>
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

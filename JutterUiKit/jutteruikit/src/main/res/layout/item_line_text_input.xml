@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:id="@+id/vgContainer"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@android:color/darker_gray"
+        app:strokeWidth="1dp"
+        xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+    >
+        <TextView
+                android:id="@+id/tvHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginBottom="8dp"
+                tools:text="Название поля"
+                android:layout_gravity="center"/>
+        <TextView
+                android:id="@+id/tvMand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginBottom="8dp"
+                tools:text="*"
+                android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <online.juter.supersld.view.input.form.JTClearedEditText
+            android:id="@+id/etInputLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:gravity="top"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:fontFamily="@font/roboto_regular"
+            android:background="@null"
+            tools:text="Введенное значение"
+    />
+
+</LinearLayout>
