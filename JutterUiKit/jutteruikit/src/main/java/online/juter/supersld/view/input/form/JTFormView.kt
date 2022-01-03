@@ -2,7 +2,6 @@ package online.juter.supersld.view.input.form
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -14,7 +13,18 @@ import kotlinx.android.synthetic.main.view_form.view.*
 import online.juter.supersld.R
 
 /**
- *  Конструктор для форм.
+ * Конструктор для форм.
+ *
+ * В него передается форма [JTForm] и отображается
+ * давай пользователю заполнить огромное количество полей
+ * в удобном для него виде.
+ *
+ * Для базовой кастомизации формы используется объект
+ * [JTFormParams] с базовыми цветами и стилями. Далее для
+ * кастомизации каждого элемента можно его переопределить,
+ * заменив ссылку на холдер и разметку. Также можно
+ * реализовывать свои поля формы, но их ViewHolder обязательно
+ * должен наследлваться от [JTFormBaseHolder].
  *
  * @author Solyanoy Leonid (solyanoy.leonid@gmail.com)
  */
@@ -81,10 +91,15 @@ class JTFormView : LinearLayout {
             mFragments.add(page)
         }
         vpFormPager.setPagingEnabled(false)
-        vpFormPager.adapter = ExpanseProfitPageAdapter(childFragmentManager, mFragments)
+        vpFormPager.adapter = JTFormPageAdapter(childFragmentManager, mFragments)
         updateLine()
     }
 
+    /**
+     * Переход к следующей странице
+     * формы, в случае если все поля на текущей
+     * странице заполнены верно.
+     */
     fun next() {
         if (mPosition < mFragments.size - 1)
             if (mForm!!.pages[mPosition].isValid()) {
@@ -96,6 +111,10 @@ class JTFormView : LinearLayout {
         updateLine()
     }
 
+    /**
+     * Переход к предыдущей странице формы или
+     * к выходу из формы (если выбрана первая страница)
+     */
     fun previous() {
         if (mPosition > 0) {
             vpFormPager.setCurrentItem(vpFormPager.currentItem - 1, true)
@@ -127,7 +146,7 @@ class JTFormView : LinearLayout {
     }
 
     /**
-     * Завершение заполнения формы.
+     * Калбэк для определения завершения формы.
      */
     fun onFinish(finish: (JTForm)->Unit) {
         mFinishListener = finish
@@ -140,19 +159,11 @@ class JTFormView : LinearLayout {
         mLastPosition = mPosition
     }
 
-    inner class ExpanseProfitPageAdapter(fm: FragmentManager,
-                                         private val fragments: MutableList<Fragment>
+    inner class JTFormPageAdapter(fm: FragmentManager,
+                                  private val fragments: MutableList<Fragment>
     ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        override fun getItem(position: Int): Fragment {
-            return fragments[position]
-        }
-
-        override fun getCount(): Int {
-            return fragments.size
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return fragments[position].tag
-        }
+        override fun getItem(position: Int): Fragment = fragments[position]
+        override fun getCount(): Int = fragments.size
+        override fun getPageTitle(position: Int): CharSequence? = fragments[position].tag
     }
 }

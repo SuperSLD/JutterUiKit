@@ -3,6 +3,10 @@ package online.juter.supersld.view.input.form
 import android.graphics.Color
 import online.juter.supersld.R
 
+/**
+ * Параметры для определения внешнего вида
+ * базовых элементов формы.
+ */
 class JTFormParams {
     var colorAccent = Color.parseColor("#EA4335")
     var colorBorder = Color.parseColor("#EEEFF1")
