@@ -7,9 +7,8 @@ import online.juter.supersld.view.input.form.JTForm
 import online.juter.supersld.view.input.form.JTFormPage
 import online.juter.supersld.view.input.form.lines.*
 import online.juter.supersld.view.input.form.lines.TextInputLine.Companion.INTEGER
-import online.juter.supersld.view.input.selectors.JTHorizontalSwitch
-import org.w3c.dom.Text
 import java.util.*
+import kotlin.random.Random.Default.nextInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,11 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        with(vForm) {
-            init(
-                createForm(),
-                supportFragmentManager
-            )
+        with(vProgress) {
+            setMaxProgress(100)
+            updateProgress(50)
+            btnRand.setOnClickListener {
+                updateProgress(Random().nextInt(100))
+            }
+            btnMax.setOnClickListener { updateProgress(100) }
+            btnMin.setOnClickListener { updateProgress(0) }
         }
     }
 

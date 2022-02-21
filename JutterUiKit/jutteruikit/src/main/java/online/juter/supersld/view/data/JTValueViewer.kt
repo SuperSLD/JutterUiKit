@@ -190,6 +190,34 @@ class JTValueViewer: View {
     }
 
     /**
+     * Обновление значения прогресса
+     * @param progress значение прогресса
+     *        которое будет добавлено к текущему.
+     */
+    fun updateProgress(progress: Float, animated: Boolean = true) {
+        val det = progress - mProgress
+        if (animated) {
+            mAnimator?.cancel()
+            mAnimator = ValueAnimator.ofFloat(mProgress, mProgress + det)
+            with(mAnimator!!) {
+                duration = kotlin.math.abs((progress / mMaxProgress) * mDuration).toLong()
+                addUpdateListener {
+                    mProgress = it.animatedValue as Float
+                    invalidate()
+                }
+                doOnEnd {
+                    if (mProgress > mMaxProgress) mProgress = 0f
+                }
+                start()
+            }
+        } else {
+            mProgress += det
+            if (mProgress > mMaxProgress) mProgress = 0f
+            invalidate()
+        }
+    }
+
+    /**
      * Установка значения в прогресс
      * @param progress полное значение прогресса.
      */
@@ -204,6 +232,15 @@ class JTValueViewer: View {
      */
     fun addProgress(progress: Int, animated: Boolean = true) {
         addProgress(progress.toFloat(), animated)
+    }
+
+    /**
+     * Обновление значения прогресса
+     * @param progress значение прогресса
+     *        которое будет добавлено к текущему.
+     */
+    fun updateProgress(progress: Int, animated: Boolean = true) {
+        updateProgress(progress.toFloat(), animated)
     }
 
     @SuppressLint("DrawAllocation")

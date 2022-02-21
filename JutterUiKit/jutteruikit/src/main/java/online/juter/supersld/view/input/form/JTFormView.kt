@@ -44,6 +44,7 @@ class JTFormView : LinearLayout {
     private var mForm: JTForm? = null
     private var mExitListener: (()->Unit)? = null
     private var mFinishListener: ((JTForm)->Unit)? = null
+    private var mToastListener: ((String)->Unit)? = null
 
     init {
         View.inflate(context, R.layout.view_form, this)
@@ -105,7 +106,15 @@ class JTFormView : LinearLayout {
             if (mForm!!.pages[mPosition].isValid()) {
                 vpFormPager.setCurrentItem(vpFormPager.currentItem + 1, true)
             } else {
-                Toast.makeText(context, "Пожалуйста заполните все обязательные поля чтобы продолжить", Toast.LENGTH_SHORT).show()
+                if (mToastListener == null) {
+                    Toast.makeText(
+                        context,
+                        "Пожалуйста заполните все обязательные поля чтобы продолжить",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    mToastListener?.invoke("Пожалуйста заполните все обязательные поля чтобы продолжить")
+                }
             }
         mPosition = vpFormPager.currentItem
         updateLine()
@@ -141,7 +150,11 @@ class JTFormView : LinearLayout {
         if (this.mForm?.isValid() == true) {
             mFinishListener?.invoke(this.mForm!!)
         } else {
-            Toast.makeText(context, "Пожалуйста заполните все поля перед отправкой", Toast.LENGTH_SHORT).show()
+            if (mToastListener == null) {
+                Toast.makeText(context, "Пожалуйста заполните все поля перед отправкой", Toast.LENGTH_SHORT).show()
+            } else {
+                mToastListener?.invoke("Пожалуйста заполните все поля перед отправкой")
+            }
         }
     }
 
@@ -150,6 +163,15 @@ class JTFormView : LinearLayout {
      */
     fun onFinish(finish: (JTForm)->Unit) {
         mFinishListener = finish
+    }
+
+    /**
+     * Переопределение отображения тостов.
+     * Если его не вызывать, то будут показываться
+     * дефолтные тосты анжроида.
+     */
+    fun onToast(listener: (String)->Unit) {
+        mToastListener = listener
     }
 
     @SuppressLint("SetTextI18n")

@@ -12,6 +12,7 @@ class SolidLineHolder(itemView: View) : JTFormBaseHolder(itemView) {
         line as SolidTextLine
         with(itemView) {
             tvText.text = line.text
+            tvText.setTextColor(getParams().colorTextPrimary)
             tvText.setBackgroundColor(getParams().colorBorder)
         }
     }

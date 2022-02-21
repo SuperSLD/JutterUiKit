@@ -11,6 +11,7 @@ class TextLineHolder(itemView: View) : JTFormBaseHolder(itemView) {
         line as TextLine
         with(itemView) {
             tvText.text = line.text
+            tvText.setTextColor(getParams().colorTextPrimary)
         }
     }
 }
