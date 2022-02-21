@@ -9,35 +9,10 @@
               android:orientation="vertical"
 >
 
-    <online.juter.supersld.view.data.JTLineProgress
-            android:id="@+id/vProgress"
+    <online.juter.supersld.view.input.selectors.JTHorizontalSwitch
+            android:id="@+id/vSwitch"
             android:layout_width="match_parent"
-            android:layout_height="8dp"
-    />
-
-    <Button
-            android:id="@+id/btnRand"
-            android:text="randomize"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-    />
-    <Button
-            android:id="@+id/btnMax"
-            android:text="max"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-    />
-    <Button
-            android:id="@+id/btnMin"
-            android:text="min"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
     />
 
 </LinearLayout>

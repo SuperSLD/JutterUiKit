@@ -16,67 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        with(vProgress) {
-            setMaxProgress(100)
-            updateProgress(50)
-            btnRand.setOnClickListener {
-                updateProgress(Random().nextInt(100))
-            }
-            btnMax.setOnClickListener { updateProgress(100) }
-            btnMin.setOnClickListener { updateProgress(0) }
+        with(vSwitch) {
+            init(mutableListOf("Первый таб", "Второй таб", "Третий таб"))
         }
     }
 
-    private fun createForm() = JTForm(
-        name = "test_form",
-        finishText = "Завершить",
-        pages = mutableListOf(
-            JTFormPage(
-                lines = mutableListOf(
-                    TextLine("Текстовая линия"),
-                    SolidTextLine("Плашка с инфой"),
-                    SolidTextLine("И еще одна плашка с инфой, но в ней намного больше текста"),
-                    TextLine("Текст после плашки с инфой"),
-                    TextInputLine("et1", "Ввод текста", mandatory = true),
-                    TextInputLine("et2", "Введенный текст", value = "Введенный заранее текст", mandatory = false),
-                    TextInputLine("et3", "Введенный текст", value = "228", inputType = INTEGER),
-                    RadioLine(
-                        id = "rg",
-                        title = "Выбор из нескольких вариантов",
-                        list = mutableListOf(RadioItem("it1", "Первый вариант"), RadioItem("it2", "Второй вариант"))
-                    ),
-                    CheckBoxLine("cb1", text = "Все работает?")
-                ),
-                buttonText = "Далее"
-            ),
-            JTFormPage(
-                lines = mutableListOf(
-                    TextLine("Текстовая линия"),
-                    TextInputLine("et1", "Ввод текста", mandatory = true),
-                    TextInputLine("et228", "Введенный текст", value = "Введенный заранее текст + 228", mandatory = false),
-                    RadioLine(
-                        id = "rg",
-                        title = "Выбор из нескольких вариантов",
-                        list = mutableListOf(RadioItem("it1", "Первый вариант"), RadioItem("it2", "Второй вариант"))
-                    ),
-                    CheckBoxLine("cb1", text = "Все работает?")
-                ),
-                buttonText = "Далее"
-            ),
-            JTFormPage(
-                lines = mutableListOf(
-                    TextLine("Текстовая линия"),
-                    TextInputLine("et1", "Ввод текста", mandatory = true),
-                    TextInputLine("et2", "Введенный текст", mandatory = false),
-                    RadioLine(
-                        id = "rg",
-                        title = "Выбор из нескольких вариантов",
-                        list = mutableListOf(RadioItem("it1", "Первый вариант"), RadioItem("it2", "Второй вариант"))
-                    ),
-                    CheckBoxLine("cb1", text = "Все работает?")
-                ),
-                buttonText = "Далее"
-            )
-        )
-    )
 }
